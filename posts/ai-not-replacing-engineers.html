@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Is Not Here To Replace Software Engineers</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a08;
+    --surface: #111110;
+    --accent: #e8ff47;
+    --accent2: #ff6b35;
+    --text: #e8e4d9;
+    --muted: #6b6860;
+    --border: #2a2a26;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* Grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.4;
+  }
+
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    animation: fadeDown 0.6s ease both;
+  }
+
+  .logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .tag-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: #000;
+    padding: 0.35rem 0.85rem;
+    border-radius: 100px;
+    font-weight: 500;
+  }
+
+  .hero {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 6rem 2rem 3rem;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 7vw, 6rem);
+    font-weight: 900;
+    line-height: 1.02;
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .divider {
+    width: 1px;
+    height: 16px;
+    background: var(--border);
+  }
+
+  .article-body {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+    animation: fadeUp 0.8s 0.25s ease both;
+  }
+
+  .article-body p {
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: #c8c4b9;
+    margin-bottom: 1.8rem;
+    font-weight: 300;
+  }
+
+  .article-body p strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .callout {
+    margin: 3rem 0;
+    padding: 2rem 2rem 2rem 2.5rem;
+    border-left: 3px solid var(--accent);
+    background: rgba(232, 255, 71, 0.04);
+  }
+
+  .callout p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem !important;
+    font-style: italic;
+    line-height: 1.5 !important;
+    color: var(--text) !important;
+    margin: 0 !important;
+  }
+
+  .callout cite {
+    display: block;
+    margin-top: 0.75rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    font-style: normal;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+
+  .security-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--accent2);
+    padding: 2rem;
+    margin: 2.5rem 0;
+    position: relative;
+  }
+
+  .security-box::before {
+    content: '⚠ SECURITY NOTE';
+    position: absolute;
+    top: -0.65rem;
+    left: 1.5rem;
+    background: var(--accent2);
+    color: #000;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    padding: 0.2rem 0.6rem;
+    font-weight: 500;
+  }
+
+  .security-box p {
+    font-size: 0.95rem !important;
+    margin: 0 !important;
+  }
+
+  .ratio-viz {
+    display: flex;
+    margin: 3rem 0;
+    height: 80px;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .ratio-ai {
+    width: 80%;
+    background: linear-gradient(90deg, #2a2a20, #3a3a28);
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .ratio-human {
+    width: 20%;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: #000;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .tldr-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    margin: 3rem 0 0;
+  }
+
+  .tldr-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .tldr-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .tldr-section p {
+    font-size: 1rem !important;
+    color: var(--text) !important;
+    margin: 0 !important;
+    line-height: 1.7 !important;
+  }
+
+  .source-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    border-bottom: 1px solid rgba(232,255,71,0.3);
+    padding-bottom: 1px;
+    transition: border-color 0.2s;
+  }
+  .source-link:hover { border-color: var(--accent); }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="logo">Dev × AI — Opinion</span>
+  <span class="tag-pill">Human Written</span>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">Software Engineering × Artificial Intelligence</div>
+  <h1>AI Is Not Here To Replace<br><em>Software Engineers</em></h1>
+  <div class="meta">
+    <span>Feb 2026</span>
+    <span class="divider"></span>
+    <span>7 min read</span>
+    <span class="divider"></span>
+    <span>TLDR generated by AI — article is human</span>
+  </div>
+</section>
+
+<article class="article-body">
+
+  <p>Most people tend to overlook the work that software engineers do on a daily basis — and I was one of those people. I used to throw around phrases like <strong>"I could have AI make that in a couple of minutes"</strong> or <strong>"I could vibe code that real quick."</strong> Then I did. And surprisingly, it was better than I expected.</p>
+
+  <p>But the more I started applying what I actually know about development and security, the more flaws I started to notice.</p>
+
+  <div class="security-box">
+    <p>LLMs were <strong>hallucinating packages</strong> — fabricating reusable code modules that don't exist — and then attempting to download them. They left major backdoors open. And since most of the world uses AI for coding and there are only a handful of models the general public actually uses, you end up with disturbingly <strong>common patterns for secret keys</strong> across codebases everywhere. <a class="source-link" href="https://www.invicti.com/blog/security-labs/security-issues-in-vibe-coded-web-apps-analyzed" target="_blank">↗ The vulnerabilities are well documented</a> — most of which I found in my own apps.</p>
+  </div>
+
+  <div class="callout">
+    <p>"AI is not the engineer. AI is not the architect. AI is the laborer."</p>
+  </div>
+
+  <p>Which is why software engineering is not going to disappear. <strong>Rather, coding is.</strong> Nvidia's CEO Jensen Huang famously stated that nothing would give him more joy than if none of their engineers were coding at all. This wasn't a war on software engineering — it was a remark about how humans should use AI to save time so they can focus on the problems that actually matter.</p>
+
+  <p>All we did was <strong>remove the bottlenecks</strong>. All we did was make work more efficient.</p>
+
+  <p>And here's what people miss: any successful vibe-coded product still has a developer writing the PRD, designing the architecture, making the critical calls. There is a massive difference between prompting <em>"build me a website for house sellers"</em> and the 200+ line starting prompts I write when I build my boilerplate.</p>
+
+  <div class="ratio-viz">
+    <div class="ratio-ai">🤖 &nbsp; AI handles the 80% — the scaffolding, the boilerplate, the heavy lifting</div>
+    <div class="ratio-human">You<br>20%<br>✓</div>
+  </div>
+
+  <p>While AI is getting better, it still is not at the point of true Artificial General Intelligence. Which is why I always follow the <strong>80/20 rule</strong> — I always do the last 20%. That last 20% is the security review, the architectural decision, the judgment call no model can reliably make yet.</p>
+
+  <p>So rest easy, developers and software engineers. AI is still far behind, and compute is still expensive.</p>
+
+  <div class="tldr-section">
+    <div class="tldr-label">TLDR — AI Generated</div>
+    <p>AI is a powerful laborer, not a software engineer. Vibe coding looks great on the surface — until you notice hallucinated packages, hardcoded secrets, and backdoors wide open. Real engineering isn't disappearing; just writing code is. The architect still matters. Let AI handle the heavy lifting, but you do the last 20% that actually counts. Jensen Huang agrees. Sleep well, devs. 🛌</p>
+  </div>
+
+</article>
+
+<footer>
+  The article above was written by a human. The TLDR was not. Can you tell the difference?
+</footer>
+
+</body>
+</html>

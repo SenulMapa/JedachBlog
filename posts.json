@@ -1,0 +1,38 @@
+[
+  {
+    "title": "AI Is Not Here To Replace Software Engineers (At Least Not Yet)",
+    "slug": "ai-not-replacing-engineers.html",
+    "tag": "AI & Security",
+    "date": "2026-02-01",
+    "readTime": "7 min read",
+    "featured": true,
+    "excerpt": "I used to say 'I could vibe code that in minutes.' Then I did. Then I checked the security. Hallucinated packages, exposed credentials, wide-open backdoors — here's what the hype leaves out and why the 80/20 rule still matters."
+  },
+  {
+    "title": "The Secret Keys Everyone's Accidentally Pushing to GitHub",
+    "slug": "secret-keys-github.html",
+    "tag": "Security",
+    "date": "2026-01-28",
+    "readTime": "5 min read",
+    "featured": false,
+    "excerpt": "One bad commit, one exposed API key, one very bad Tuesday. Here's how to stop it from happening."
+  },
+  {
+    "title": "My 200-Line Boilerplate Prompt (And Why It Matters)",
+    "slug": "boilerplate-prompt.html",
+    "tag": "Vibe Coding",
+    "date": "2026-01-20",
+    "readTime": "6 min read",
+    "featured": false,
+    "excerpt": "'Build me a website' vs a structured PRD. The difference between a toy and a real product starts in the prompt."
+  },
+  {
+    "title": "Why LLM Hallucinations Are a Security Problem",
+    "slug": "llm-hallucinations-security.html",
+    "tag": "AI & LLMs",
+    "date": "2026-01-15",
+    "readTime": "8 min read",
+    "featured": false,
+    "excerpt": "When your AI downloads a package that doesn't exist, that's not just wrong — it's a potential attack vector."
+  }
+]
